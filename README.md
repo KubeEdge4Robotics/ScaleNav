@@ -1,6 +1,6 @@
 # ScaleNav
-This is the reimplemented code of "*(ICRA 2024) SCALE: Self-Correcting Visual Navigation for Mobile Robots via
-Anti-Novelty Estimation"* by myself. The original code is owned by the company where I did the intern.
+This is the reimplemented code of [*"(ICRA 2024) SCALE: Self-Correcting Visual Navigation for Mobile Robots via
+Anti-Novelty Estimation"*](https://arxiv.org/pdf/2404.10675) by myself. The original code is owned by the company where I did the intern.
 ![Image](images/framework.png)
 
 ## Requirements
