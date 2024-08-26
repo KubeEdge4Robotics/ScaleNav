@@ -1,0 +1,20 @@
+numpy
+matplotlib
+PyYAML
+scipy
+tensorboardX
+torch
+torchvision
+tqdm
+opencv_python
+pyrealsense2
+
+
+--extra-index-url http://rospypi.github.io/simple/ 
+--trusted-host rospypi.github.io
+rospkg
+rospy
+sensor_msgs
+tf
+geometry_msgs
+cv_bridge

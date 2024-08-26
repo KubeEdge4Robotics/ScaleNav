@@ -1,0 +1,142 @@
+# Env_name: 'custom'
+
+NUM_PROCESSES: 16 # 4
+NUM_VAL_PROCESSES: 0
+seed: 42
+dataset_root: 
+raw_data_root: 
+selected_data: 
+
+train_data_dirs:
+  -
+  -
+eval_data_dirs:
+  - 
+  -
+
+
+Data:
+  max_episode_steps: 10000  # 1000 for [HalfCheetah-v2, Ant-v2, Walker2d-v2], 50 for SawyerRigGrasp-v0, 200 for [pen-binary-v0, door-binary-v0, relocate-binary-v0], referring to rlkit@github.
+  collide_horizon: 2
+  goal_range_max: 29 # 29
+  # goal_range_maxes: [10, 20, 30, 40, 50]
+  train_val_divide: false
+  train_val_ratio: 0.8
+  goal_range_step: 5
+  goal_range_min: 0
+  dataset_repeat_time: 10 # 20
+  dist_thred: 2
+  angle_thred: 0.2
+  collision: -10.0
+  success: 0.0
+  lambda_dist: 1.0
+  lambda_angle: 1.0 # 0.1
+  image_shape: [3, 256, 256]  # resized shape
+  obs_dim: 2
+  act_dim: 2
+  # pose_shape: 3  # x, y, yaw
+  # action_space: 2  # linear, angular
+  augment_rate: 0.9
+  neg_sample: true
+  neg_fraction: 0.5
+
+  random_mask: false
+  mask_num: 2
+  seg_input: false
+  seg_category_num: 20
+  
+Train:
+  optimizer_class: optim.AdamW
+  qf_criterion: nn.MSELoss
+  vf_criterion: nn.MSELoss
+  policy_lr: 3.0e-4
+  qf_lr: 3.0e-4
+  lr_warmup: 0.2
+  policy_weight_decay: 0
+  q_weight_decay: 0
+  policy_update_period: 1
+  q_update_period: 1
+  soft_target_tau: 0.005
+  target_update_period: 1
+  batch_size: 128
+  warm_up_steps: 100
+  max_train_steps: 20000
+  plot_period: 500
+  save_period: 5000
+  
+  
+Eval:
+  eval_period: 1000
+  n_eval_episodes: 10
+  batch_size: 32
+  images_dir:
+  model_path:
+    - 
+    -
+
+
+IQL:
+  hidden_dim: 256
+  n_hidden: 2
+  expectile: 0.7 #* 0.9
+  beta: 1  #  0.1  #* 
+  discount: 0.99
+  # alpha: 0.005  # soft update, 0.005
+  reward_scale: 1.0
+  max_exp_adv: 100.
+  MIN_LOG_STD: -2.0 
+  MAX_LOG_STD: -1.0 
+  use_vib: false
+  vib_weight: 0.01 # 0.1 will be worse
+  deterministic_policy: false
+  image_encode: true
+  encoder_dim: 50  # 128, 50 in ReViND
+  encode_type: impala  # vqvae # simpleconvs # mobilenet  impala
+  pretrain_mobile: src/models/mobilenet_v2-7ebf99e0.pth
+
+
+VQVAE:
+  use_pretrain: true
+  fix: true
+  embedding_dim: 8 # 8, 128
+  hidden_dim: 128
+  imsize: 256
+  n_hidden: 1  
+  pretrain_path: 
+  
+  
+
+Value:
+  use_pretrain: false
+  use_plan_vf: false
+  use_temporal: false
+  pretrain_path:
+  fraction_negative_obs: 0.3
+  fraction_negative_goal: 0.3
+
+
+RND:
+  use_rnd_penalty: false
+  use_film: false
+  rnd_beta: 1.0
+  hidden_dim: 256
+  use_pretrain: true
+  pretrain_path: 
+
+Affordance:
+  use_afford: false 
+  use_pretrain: false
+  network_type: simple_ccvae
+  pretrain_path: 
+  hidden_dim: 128
+  n_hidden: 2
+  z_dim: 64 
+  pred_weight: 10000. 
+  beta: 1.0
+  loss_weight: 1 
+  rnn_afford: false
+  att_afford: false
+  rnn_horizon: 4
+  num_samples: 1024
+  num_iters: 5
+  
