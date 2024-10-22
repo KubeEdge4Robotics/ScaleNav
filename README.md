@@ -53,7 +53,21 @@ After training, specify the pretrained model's path to *RND.pretrained_path* in 
 ```python3
 python3 src/deployment.py   (optional: --no_ros)
 ```
-
+## Cite
+If you find our code or paper useful, please cite
+```bibtex
+@INPROCEEDINGS{chen2024scale,
+  author={Chen, Chang and Liu, Yuecheng and Zhuang, Yuzheng and Mao, Sitong and Xue, Kaiwen and Zhou, Shunbo},
+  booktitle={2024 IEEE International Conference on Robotics and Automation (ICRA)}, 
+  title={SCALE: Self-Correcting Visual Navigation for Mobile Robots via Anti-Novelty Estimation}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={16360-16366},
+  keywords={Location awareness;Visualization;Q-learning;Navigation;Robustness;Robot localization;Trajectory},
+  doi={10.1109/ICRA57147.2024.10610847}
+}
+```
 
 
 
